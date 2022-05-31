@@ -11,6 +11,7 @@ int yylex();
 input:expr ENTER {printf("Result is %d",$$);exit(0);}
 expr: expr '+' expr{$$=$1+$3;}
 	| expr '-' expr{$$=$1-$3;}
+	|'(' expr ')'{$$=$2;}
 	| expr '*' expr{$$=$1*$3;}
 	| expr '/' expr{if($3 == 0){printf("divide by 0 error");exit(0);}else{$$=$1/$3;}}
 	| NUMBER{$$-$1;}
